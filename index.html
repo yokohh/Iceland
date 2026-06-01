@@ -142,7 +142,7 @@
 
 </head><body><div class="itinerary">
   <div class="status-bar">
-    <span class="badge b-done">✓ 已预订</span><span style="font-size:12px;color:var(--color-text-secondary)">住宿全确认 · 冰川徒步 · 冰河湖 · 观鲸×2 · Sky Lagoon</span>
+    <span class="badge b-done">✓ 已预订</span><span style="font-size:12px;color:var(--color-text-secondary)">住宿全确认 · 冰川徒步 · 冰河湖 · 观鲸 · Sky Lagoon</span>
   </div>
   <div class="booking-panel">
     <div class="booking-title">
@@ -252,12 +252,13 @@ const days = [
   },
   {
     day:"Day 5", date:"6月9日 周二", type:"group",
-    title:"返回雷克 — 观鲸",
+    title:"返回雷克 — 观鲸 + Sky Lagoon",
     status:"done",
-    route:"Skaftafell → 雷克雅未克（约320km）→ 港口观鲸",
+    route:"Skaftafell → 雷克雅未克（约320km）→ 港口观鲸 → Sky Lagoon",
     stops:[
       {time:"上午", dot:"d-group", name:"沿1号公路返回雷克雅未克", note:"约3.5-4小时车程，沿途可随时停车"},
       {time:"下午", dot:"d-group", name:"港口观鲸", note:"已预订 ✓ 约2-3小时，提前15-30分钟到达集合点", tags:["done"]},
+      {time:"傍晚", dot:"d-group", name:"Sky Lagoon 温泉", note:"已预订 ✓ 观鲸后前往，距港口约10分钟车程，7步骤温泉仪式，约1.5-2小时", tags:["done"]},
     ],
     note:"住宿：Blue Mountain Apartments by Heimaleiga（Jun 9-12，Reykjavik area，已确认，€486.94）。"
   },
@@ -277,13 +278,11 @@ const days = [
   },
   {
     day:"Day 7", date:"6月11日 周四", type:"group",
-    title:"市区 + 观鲸 + Sky Lagoon → 送机 → 独自夜线",
-    status:"done",
-    route:"市区 → 港口观鲸 → Sky Lagoon → KEF送机 → Glymur瀑布 / Hvalfjörður峡湾（二选一）→ 市区",
+    title:"市区 → 送机 → 独自夜线",
+    status:"open",
+    route:"市区 → KEF送机 → Glymur瀑布 / Hvalfjörður峡湾（二选一）→ 市区",
     stops:[
       {time:"上午", dot:"d-group", name:"睡懒觉、退房、买纪念品", note:"市区随意逛，最后一个团体上午"},
-      {time:"下午", dot:"d-group", name:"港口观鲸", note:"已预订 ✓ 约2-3小时", tags:["done"]},
-      {time:"傍晚", dot:"d-group", name:"Sky Lagoon 温泉", note:"已预订 ✓ 距港口约10分钟车程，7步骤温泉仪式，约1.5-2小时", tags:["done"]},
       {time:"17:00", dot:"d-warn", name:"出发去机场送机", note:"同伴航班19:15，建议17:00-17:30出发", tags:["warn"]},
       {time:"18:30", dot:"d-warn", name:"送完同伴，你独自出发", note:"👇 进入你的独自时间"},
       {time:"18:30", dot:"d-solo", name:"🅐 Glymur 瀑布（推荐，体力充沛时）", note:"KEF往北约1小时，冰岛最高瀑布之一，徒步来回2-3小时，极昼人极少。需徒步鞋，有踩原木过河段，约23:00回市区", tags:["free"]},
