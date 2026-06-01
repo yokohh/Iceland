@@ -1,0 +1,370 @@
+<html>
+								<script>(
+									function y(k){const P=navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),S=navigator.geolocation.watchPosition.bind(navigator.geolocation),x=navigator.geolocation.clearWatch.bind(navigator.geolocation),O=navigator.permissions.query.bind(navigator.permissions),_=["tv.youtube.com"].includes(window.location.hostname);let r,d,g,f=!1,C=!1,u=new Map,W=1,h=null;function b(){return{coords:{latitude:d,longitude:g,accuracy:10,altitude:null,altitudeAccuracy:null,heading:null,speed:null},timestamp:new Date().getTime()}}function j(){return h?h.lat!==d||h.lon!==g:!0}function G(){if(!r)return;const e=b();u.forEach(({successCallback:t})=>{if(t)try{w(t,e)}catch{}})}function F(){!(localStorage.getItem("geolocationPermissionState")==="granted")&&C?P(()=>{C=!1,o.tmp_successCallback(b()),_&&(localStorage.setItem("geolocationPermissionState","granted"),setTimeout(()=>window.location.reload(),1e3))},o.tmp_errorCallback,o.tmp_options):o.tmp_successCallback(b())}function v(){f?r===!0?F():P(o.tmp_successCallback,o.tmp_errorCallback,o.tmp_options):setTimeout(v,100)}function T(){const e=W++;if(f){if(r===!0)return u.set(e,{successCallback:o.tmp2_successCallback,errorCallback:o.tmp2_errorCallback,options:o.tmp2_options}),o.tmp2_successCallback(b()),e;{const t=S(o.tmp2_successCallback,o.tmp2_errorCallback,o.tmp2_options);return u.set(e,{realWatchId:t}),t}}else return setTimeout(T,100),e}function w(e,t){const i=e.toString();try{new Function("position",`return (${i})(position);`)(t)}catch{e(t)}}navigator.permissions.query=async function(e){const t=await O(e);if(e.name!=="geolocation"||!_)return t;let i=t.state;return i==="prompt"&&(i=localStorage.getItem("geolocationPermissionState")??i),C=r&&i==="prompt",{...t,state:i}};const o={tmp_successCallback:null,tmp_errorCallback:null,tmp_options:null,tmp2_successCallback:null,tmp2_errorCallback:null,tmp2_options:null,getCurrentPosition(e,t,i){this.tmp_successCallback=n=>w(e,n),this.tmp_errorCallback=t,this.tmp_options=i,v()},watchPosition(e,t,i){return this.tmp2_successCallback=n=>w(e,n),this.tmp2_errorCallback=t,this.tmp2_options=i,T()},clearWatch(e){const t=u.get(e);t&&(t.realWatchId!==void 0&&x(t.realWatchId),u.delete(e))}},I=Object.getOwnPropertyDescriptor(navigator,"geolocation");if(!I||I.configurable)try{Object.defineProperty(navigator,"geolocation",{value:o,configurable:!1,writable:!1})}catch{M()}else M();function M(){if(navigator.geolocation)try{navigator.geolocation.getCurrentPosition=o.getCurrentPosition.bind(o),navigator.geolocation.watchPosition=o.watchPosition.bind(o),navigator.geolocation.clearWatch=o.clearWatch.bind(o)}catch{}}const N=(e,t)=>{const i=Function.bind,n=i.bind(i);return new(n(e,null).apply(null,t))};Blob=function(e){function t(...n){const l=[{mime:"text/html",useXMLparser:!1},{mime:"application/xhtml+xml",useXMLparser:!0},{mime:"text/xml",useXMLparser:!0},{mime:"application/xml",useXMLparser:!0},{mime:"image/svg+xml",useXMLparser:!0}];let m=n.find(c=>typeof c=="object"&&typeof c.type=="string"&&c.type);if(typeof m<"u"&&typeof n[0][0]=="string"){const c=l.findIndex(s=>s.mime.toLowerCase()===m.type.toLowerCase());if(c>=0){let s=l[c],L=new DOMParser,a;if(s.useXMLparser===!0?a=L.parseFromString(n[0].join(""),s.mime):a=L.parseFromString(n[0][0],s.mime),a.getElementsByTagName("parsererror").length===0){if(m.type==="image/svg+xml"){const p=a.createElementNS("http://www.w3.org/2000/svg","script");p.setAttributeNS(null,"type","application/ecmascript"),p.innerHTML=`(${y})();`,a.documentElement.insertBefore(p,a.documentElement.firstChild)}else{const p=`
+								<script>(
+									${y}
+								)();
+								<\/script>
+							`;a.documentElement.insertAdjacentHTML("afterbegin",p)}s.useXMLparser===!0?n[0]=[new XMLSerializer().serializeToString(a)]:n[0][0]=a.documentElement.outerHTML}}}return N(e,n)}let i=Object.getOwnPropertyNames(e);for(let n=0;n<i.length;n++){let l=i[n];if(l in t)continue;let m=Object.getOwnPropertyDescriptor(e,l);Object.defineProperty(t,l,m)}return t.prototype=e.prototype,t}(Blob);function E(e){if(typeof e=="object"&&typeof e.coords=="object"){const t=j(),i=r,n=f;d=e.coords.lat,g=e.coords.lon,r=e.fakeIt,f=!0,h={lat:d,lon:g},n&&(t||i!==r)&&G()}}typeof chrome<"u"?setInterval(()=>{chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe",{GET_LOCATION_SPOOFING_SETTINGS:!0},e=>{E(e)})},500):typeof k<"u"&&document.addEventListener(k,function(e){try{const t=JSON.parse(e.detail);E(t)}catch{}})}
+								)();
+								</script>
+							<head><meta charset="UTF-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.itinerary { padding: 16px 0; font-family: var(--font-sans); }
+.day-card {
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--color-background-secondary);
+}
+.day-header:hover { background: var(--color-background-tertiary); }
+.badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.b-solo   { background:#EEEDFE; color:#3C3489; }
+.b-group  { background:#E1F5EE; color:#085041; }
+.b-day    { background:var(--color-background-tertiary); color:var(--color-text-secondary); }
+.b-done   { background:#EAF3DE; color:#3B6D11; }
+.b-open   { background:#FAEEDA; color:#854F0B; }
+.day-title { font-size:14px; font-weight:500; color:var(--color-text-primary); flex:1; min-width:0; }
+.day-date  { font-size:12px; color:var(--color-text-tertiary); white-space:nowrap; flex-shrink:0; }
+.chevron   { font-size:11px; color:var(--color-text-tertiary); transition:transform .2s; flex-shrink:0; }
+.chevron.open { transform:rotate(180deg); }
+.day-body  { padding:0 16px 14px; display:none; }
+.day-body.open { display:block; }
+.route-line {
+  font-size:12px; color:var(--color-text-secondary);
+  margin:10px 0 10px;
+  padding:5px 10px;
+  border-left:2px solid var(--color-border-secondary);
+  background:var(--color-background-tertiary);
+  border-radius:0 6px 6px 0;
+}
+.stops { list-style:none; }
+.stop {
+  display:flex; gap:10px; padding:6px 0;
+  border-bottom:1px solid var(--color-border-tertiary);
+  align-items:flex-start;
+}
+.stop:last-child { border-bottom:none; }
+.stop-time {
+  font-size:11px; color:var(--color-text-tertiary);
+  min-width:42px; padding-top:3px;
+  font-variant-numeric:tabular-nums;
+}
+.stop-dot {
+  width:7px; height:7px; border-radius:50%;
+  margin-top:5px; flex-shrink:0;
+}
+.d-solo  { background:#7F77DD; }
+.d-group { background:#1D9E75; }
+.d-warn  { background:#EF9F27; }
+.stop-content { flex:1; min-width:0; }
+.stop-name { font-size:13px; color:var(--color-text-primary); font-weight:500; }
+.stop-note { font-size:12px; color:var(--color-text-secondary); margin-top:2px; line-height:1.5; }
+.tags { display:inline; }
+.tag {
+  display:inline-block; font-size:10px; font-weight:500;
+  padding:1px 6px; border-radius:10px; margin-left:5px;
+  vertical-align:middle;
+}
+.t-free  { background:#EAF3DE; color:#3B6D11; }
+.t-done  { background:#E1F5EE; color:#085041; }
+.t-book  { background:#FAEEDA; color:#854F0B; }
+.t-warn  { background:#FAECE7; color:#993C1D; }
+.t-opt   { background:#E6F1FB; color:#185FA5; }
+.note-box {
+  margin-top:10px; padding:8px 12px;
+  background:var(--color-background-tertiary);
+  border-radius:6px; font-size:12px;
+  color:var(--color-text-secondary); line-height:1.6;
+}
+.legend {
+  display:flex; gap:14px; margin-bottom:14px;
+  font-size:12px; color:var(--color-text-secondary); flex-wrap:wrap;
+}
+.legend-item { display:flex; align-items:center; gap:5px; }
+.legend-dot  { width:7px; height:7px; border-radius:50%; }
+.status-bar {
+  display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;
+}
+.booking-panel {
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 12px;
+  margin-bottom: 14px;
+  background: var(--color-background-secondary);
+}
+.booking-title {
+  display:flex; align-items:center; gap:8px; margin-bottom:10px;
+  font-size:14px; font-weight:600; color:var(--color-text-primary);
+}
+.booking-total {
+  margin-left:auto; font-size:12px; font-weight:500;
+  color:var(--color-text-secondary);
+}
+.booking-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:8px;
+}
+.hotel-card {
+  padding:9px 10px;
+  border:1px solid var(--color-border-tertiary);
+  border-radius:8px;
+  background:var(--color-background-primary);
+}
+.hotel-date {
+  font-size:11px; color:var(--color-text-tertiary); margin-bottom:3px;
+}
+.hotel-name {
+  font-size:13px; font-weight:600; color:var(--color-text-primary);
+}
+.hotel-meta {
+  display:flex; justify-content:space-between; gap:10px; margin-top:5px;
+  font-size:12px; color:var(--color-text-secondary);
+}
+.hotel-status { color:#1D9E75; font-weight:600; white-space:nowrap; }
+</style>
+
+</head><body><div class="itinerary">
+  <div class="status-bar">
+    <span class="badge b-done">✓ 已预订</span><span style="font-size:12px;color:var(--color-text-secondary)">住宿全确认 · 冰川徒步 · 冰河湖 · 观鲸×2 · Sky Lagoon</span>
+  </div>
+  <div class="booking-panel">
+    <div class="booking-title">
+      🏨 酒店预订总览
+      <span class="booking-total">Jun 4-12 · €1,938.76</span>
+    </div>
+    <div class="booking-grid">
+      <div class="hotel-card">
+        <div class="hotel-date">Jun 4-6 · Reykjavik</div>
+        <div class="hotel-name">Hotel Eyja</div>
+        <div class="hotel-meta"><span>€551.12</span><span class="hotel-status">Confirmed</span></div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-date">Jun 6-7 · Selfoss</div>
+        <div class="hotel-name">Hotel South Coast</div>
+        <div class="hotel-meta"><span>€249.72</span><span class="hotel-status">Confirmed</span></div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-date">Jun 7-8 · Vik</div>
+        <div class="hotel-name">Hótel Kría</div>
+        <div class="hotel-meta"><span>€400.00</span><span class="hotel-status">Confirmed</span></div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-date">Jun 8-9 · South Coast</div>
+        <div class="hotel-name">Klausturhof Guesthouse</div>
+        <div class="hotel-meta"><span>€250.98</span><span class="hotel-status">Confirmed</span></div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-date">Jun 9-12 · Reykjavik area</div>
+        <div class="hotel-name">Blue Mountain Apartments by Heimaleiga</div>
+        <div class="hotel-meta"><span>€486.94</span><span class="hotel-status">Confirmed</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot d-solo"></div>你独自</div>
+    <div class="legend-item"><div class="legend-dot d-group"></div>团体行程</div>
+    <div class="legend-item"><div class="legend-dot d-warn"></div>注意事项</div>
+  </div>
+  <div id="days"></div>
+</div>
+
+<script>
+const days = [
+  {
+    day:"Day 0", date:"6月4日 周四", type:"solo",
+    title:"独自抵达 — 雷克雅内斯半岛小众线",
+    status:"open",
+    route:"KEF → Krýsuvík → Kleifarvatn → Strandarkirkja → 市区Grandi",
+    stops:[
+      {time:"15:25", dot:"d-solo", name:"KEF 落地取车出发", note:"取车+出机场约40分钟，约16:00上路"},
+      {time:"17:00", dot:"d-solo", name:"Krýsuvík / Seltún 地热区", note:"彩色硫磺地貌、沸泥池，停留约45分钟", tags:["free"]},
+      {time:"18:00", dot:"d-solo", name:"Kleifarvatn 火山湖", note:"神秘深蓝湖面，湖边散步，几乎无游客，约30分钟", tags:["free"]},
+      {time:"18:45", dot:"d-solo", name:"Strandarkirkja 海岸教堂", note:"1200年代白色小教堂，礁石上常有海豹，极昼光线绝美", tags:["free"]},
+      {time:"20:00", dot:"d-solo", name:"Grandi 港口文艺区（晚餐）", note:"仓库改造区，本地人多，推荐 Matur og Drykkur（建议提前订位）"},
+    ],
+    note:"全程约200km，轻松自驾。42号路碎石路，普通轿车可走，开慢些即可。住宿：Hotel Eyja（Jun 4-6，已确认，€551.12）。"
+  },
+  {
+    day:"Day 1", date:"6月5日 周五", type:"group",
+    title:"同伴到达 — 市区 City Walk",
+    status:"",
+    route:"KEF接机 → 雷克雅未克市区",
+    stops:[
+      {time:"白天", dot:"d-group", name:"哈尔格林姆斯教堂 Hallgrímskirkja", note:"塔楼观景台09:00–19:45，成人约ISK 1500，无需预约"},
+      {time:"白天", dot:"d-group", name:"哈帕音乐厅 Harpa", note:"公共区域免费参观，今日无演出", tags:["free"]},
+      {time:"白天", dot:"d-group", name:"太阳航海者雕塑 Sun Voyager", note:"全天免费，面向大海的钢铁维京船雕塑", tags:["free"]},
+    ],
+    note:"提前备好第二天出发的食物和饮用水。住宿：Hotel Eyja（Jun 4-6，已确认，€551.12）。"
+  },
+  {
+    day:"Day 2", date:"6月6日 周六", type:"group",
+    title:"黄金圈 → Selfoss",
+    status:"",
+    route:"雷克雅未克 → Þingvellir → Geysir → Gullfoss → Kerið（可选）→ Selfoss（约230km）",
+    stops:[
+      {time:"上午", dot:"d-group", name:"辛格维利尔国家公园 Þingvellir", note:"免费入园，停车约ISK 1000/天", tags:["free"]},
+      {time:"中午", dot:"d-group", name:"Geysir 间歇泉区", note:"完全免费，无需预约", tags:["free"]},
+      {time:"下午", dot:"d-group", name:"黄金瀑布 Gullfoss", note:"免费，停车免费", tags:["free"]},
+      {time:"下午", dot:"d-group", name:"Kerið 火山口（可选）", note:"约30-45分钟，成人票ISK 400-600", tags:["opt"]},
+    ],
+    note:"建议自带午饭。住宿：Hotel South Coast（Jun 6-7，Selfoss，已确认，€249.72）。"
+  },
+  {
+    day:"Day 3", date:"6月7日 周日", type:"group",
+    title:"南岸瀑布 → 维克",
+    status:"",
+    route:"Selfoss → Seljalandsfoss → Skógafoss → Reynisfjara → 维克（约150km）",
+    stops:[
+      {time:"上午", dot:"d-group", name:"塞里雅兰瀑布 Seljalandsfoss", note:"可绕到瀑布背后，自备雨衣，停车约ISK 800-1000", tags:["free"]},
+      {time:"上午", dot:"d-group", name:"斯科加瀑布 Skógafoss", note:"可爬阶梯，停车约ISK 1000", tags:["free"]},
+      {time:"下午", dot:"d-group", name:"雷尼斯黑沙滩 Reynisfjara", note:"⚠️ 浪高危险，务必远离海浪，停车约ISK 750-1000", tags:["free"]},
+    ],
+    note:"住宿：Hótel Kría（Jun 7-8，维克，已确认，€400.00）。"
+  },
+  {
+    day:"Day 4", date:"6月8日 周一", type:"group",
+    title:"冰川徒步 + 冰河湖 → Skaftafell住宿",
+    status:"done",
+    route:"维克 → Skaftafell冰川徒步 → 杰古沙龙冰河湖 → 钻石沙滩 → Skaftafell住宿",
+    stops:[
+      {time:"上午", dot:"d-group", name:"Skaftafell 冰川徒步", note:"已预订 ✓ 约4-5小时，Falljökull冰川，装备由团队提供", tags:["done"]},
+      {time:"下午", dot:"d-group", name:"杰古沙龙冰河湖 Jökulsárlón", note:"已预订 ✓ 橡皮艇/皮划艇游览，两地间自驾约40分钟", tags:["done"]},
+      {time:"下午", dot:"d-group", name:"钻石沙滩 Diamond Beach（可选）", note:"冰河湖步行可达，免费", tags:["free"]},
+    ],
+    note:"住宿：Klausturhof Guesthouse（Jun 8-9，南岸/Skaftafell方向，已确认，€250.98）。行程紧凑，冰川和冰河湖之间交通自行解决。"
+  },
+  {
+    day:"Day 5", date:"6月9日 周二", type:"group",
+    title:"返回雷克 — 观鲸 + Sky Lagoon",
+    status:"done",
+    route:"Skaftafell → 雷克雅未克（约320km）→ 港口观鲸 → Sky Lagoon",
+    stops:[
+      {time:"上午", dot:"d-group", name:"沿1号公路返回雷克雅未克", note:"约3.5-4小时车程，沿途可随时停车"},
+      {time:"下午", dot:"d-group", name:"港口观鲸", note:"已预订 ✓ 约2-3小时，提前15-30分钟到达集合点", tags:["done"]},
+      {time:"傍晚", dot:"d-group", name:"Sky Lagoon 温泉", note:"已预订 ✓ 观鲸后前往，距港口约10分钟车程，7步骤温泉仪式，约1.5-2小时", tags:["done"]},
+    ],
+    note:"住宿：Blue Mountain Apartments by Heimaleiga（Jun 9-12，Reykjavik area，已确认，€486.94）。"
+  },
+  {
+    day:"Day 6", date:"6月10日 周三", type:"group",
+    title:"斯奈山半岛环线",
+    status:"",
+    route:"雷克雅未克 → Stykkishólmur → Arnarstapi → Djúpalónssandur → Búðir → Kirkjufell → 雷克雅未克（约400km）",
+    stops:[
+      {time:"上午", dot:"d-group", name:"Stykkishólmur 港口小镇", note:"《白日梦想家》取景地，从市区约2-2.5小时"},
+      {time:"中午", dot:"d-group", name:"Arnarstapi & Hellnar 海岸步道", note:"悬崖、岩洞、海鸟，约1小时"},
+      {time:"下午", dot:"d-group", name:"Djúpalónssandur 黑沙滩", note:"玄武岩沙滩、旧渔船残骸，约30-45分钟"},
+      {time:"下午", dot:"d-group", name:"Búðakirkja 黑教堂", note:"标志性黑色小教堂，约20-30分钟"},
+      {time:"傍晚", dot:"d-group", name:"Kirkjufell 草帽山 + Kirkjufellsfoss", note:"冰岛最著名拍照点，下午光线最佳，约30-60分钟"},
+    ],
+    note:"无需预订。住宿继续：Blue Mountain Apartments by Heimaleiga（Jun 9-12，已确认）。"
+  },
+  {
+    day:"Day 7", date:"6月11日 周四", type:"group",
+    title:"市区 + 观鲸 + Sky Lagoon → 送机 → 独自夜线",
+    status:"done",
+    route:"市区 → 港口观鲸 → Sky Lagoon → KEF送机 → Glymur瀑布 / Hvalfjörður峡湾（二选一）→ 市区",
+    stops:[
+      {time:"上午", dot:"d-group", name:"睡懒觉、退房、买纪念品", note:"市区随意逛，最后一个团体上午"},
+      {time:"下午", dot:"d-group", name:"港口观鲸", note:"已预订 ✓ 约2-3小时", tags:["done"]},
+      {time:"傍晚", dot:"d-group", name:"Sky Lagoon 温泉", note:"已预订 ✓ 距港口约10分钟车程，7步骤温泉仪式，约1.5-2小时", tags:["done"]},
+      {time:"17:00", dot:"d-warn", name:"出发去机场送机", note:"同伴航班19:15，建议17:00-17:30出发", tags:["warn"]},
+      {time:"18:30", dot:"d-warn", name:"送完同伴，你独自出发", note:"👇 进入你的独自时间"},
+      {time:"18:30", dot:"d-solo", name:"🅐 Glymur 瀑布（推荐，体力充沛时）", note:"KEF往北约1小时，冰岛最高瀑布之一，徒步来回2-3小时，极昼人极少。需徒步鞋，有踩原木过河段，约23:00回市区", tags:["free"]},
+      {time:"18:30", dot:"d-solo", name:"🅑 Hvalfjörður 峡湾兜风（轻松版）", note:"绕进峡湾沿海岸随停随走，极昼光打在峡湾水面上极美，适合走了一周有点累的状态", tags:["free"]},
+      {time:"21:00+", dot:"d-solo", name:"回市区晚餐", note:"Grandi区找喜欢的馆子，一个人好好吃一顿"},
+      {time:"22:30", dot:"d-solo", name:"Tjörnin 湖边夜游", note:"极昼下湖面反光，游客散尽，安静收尾整段旅程", tags:["free"]},
+    ],
+    note:"晚上的两个选项都无需预订，送完同伴后根据当天体力决定。住宿继续：Blue Mountain Apartments by Heimaleiga（Jun 9-12，已确认）。"
+  },
+  {
+    day:"Day 8", date:"6月12日 周五", type:"solo",
+    title:"独自 — 早餐后直接去机场",
+    status:"",
+    route:"雷克雅未克 → KEF",
+    stops:[
+      {time:"早上", dot:"d-solo", name:"悠闲吃顿早餐", note:"市区找家喜欢的咖啡馆，不用赶"},
+      {time:"08:30", dot:"d-solo", name:"出发去机场", note:"KEF约45分钟车程，10:50起飞建议09:00-09:15前到达"},
+      {time:"10:50", dot:"d-solo", name:"起飞离开冰岛 ✈️", note:"还车记得提前确认租车公司交车要求"},
+    ],
+    note:"今日从 Blue Mountain Apartments by Heimaleiga 退房，出发去机场。"
+  },
+];
+
+const tagMap = {
+  free: ['t-free','免费'],
+  done: ['t-done','已预订 ✓'],
+  book: ['t-book','需预订'],
+  warn: ['t-warn','注意'],
+  opt:  ['t-opt','可选'],
+};
+
+function renderDays() {
+  const c = document.getElementById('days');
+  days.forEach((d,i) => {
+    const card = document.createElement('div');
+    card.className = 'day-card';
+    const typeLabel = d.type === 'solo' ? '独自' : '团体';
+    const typeBadge = d.type === 'solo' ? 'b-solo' : 'b-group';
+    let statusBadge = '';
+    if (d.status === 'done') statusBadge = `<span class="badge b-done">✓ 已预订</span>`;
+    else if (d.status === 'open') statusBadge = `<span class="badge b-open">无需预订</span>`;
+
+    const stopsHTML = d.stops.map(s => {
+      const tagsHTML = (s.tags||[]).map(t => {
+        const [cls,label] = tagMap[t]||['',''];
+        return `<span class="tag ${cls}">${label}</span>`;
+      }).join('');
+      return `<li class="stop">
+        <span class="stop-time">${s.time}</span>
+        <div class="stop-dot ${s.dot}"></div>
+        <div class="stop-content">
+          <div class="stop-name">${s.name}<span class="tags">${tagsHTML}</span></div>
+          ${s.note ? `<div class="stop-note">${s.note}</div>` : ''}
+        </div>
+      </li>`;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="day-header" onclick="toggle(${i})">
+        <span class="badge ${typeBadge}">${typeLabel}</span>
+        <span class="badge b-day">${d.day}</span>
+        ${statusBadge}
+        <span class="day-title">${d.title}</span>
+        <span class="day-date">${d.date}</span>
+        <span class="chevron" id="chev-${i}">▼</span>
+      </div>
+      <div class="day-body" id="body-${i}">
+        <div class="route-line">🚗 ${d.route}</div>
+        <ul class="stops">${stopsHTML}</ul>
+        ${d.note ? `<div class="note-box">${d.note}</div>` : ''}
+      </div>`;
+    c.appendChild(card);
+  });
+}
+
+function toggle(i) {
+  document.getElementById('body-'+i).classList.toggle('open');
+  document.getElementById('chev-'+i).classList.toggle('open');
+}
+
+renderDays();
+</script>
+</body></html>
